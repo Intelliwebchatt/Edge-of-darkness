@@ -21,15 +21,11 @@
 
         header {
             position: relative;
-            height: 70vh; /* Reduced height from 100vh to 70vh */
+            height: 70vh; /* Reduced height */
             background-image: url('https://raw.githubusercontent.com/Intelliwebchatt/Edge-of-darkness/main/AOluq1QDZsLqj94wYdAz--1--ujpho%7E2.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
         }
 
@@ -43,25 +39,29 @@
             background: rgba(0, 0, 0, 0.7); /* Dark overlay for contrast */
         }
 
-        header h1 {
-            font-family: 'UnifrakturMaguntia', serif;
-            color: #fff;
-            font-size: 4rem;
-            z-index: 2;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+        .content-section {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #222; /* Dark background for the new section */
         }
 
-        header p {
+        .content-section h1 {
+            font-family: 'UnifrakturMaguntia', serif;
+            color: #fff;
+            font-size: 3rem;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
             font-size: 1.5rem;
             color: #ccc;
-            z-index: 2;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
             text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
         }
 
         .cta-button {
-            margin-top: 20px;
             padding: 15px 30px;
             background-color: #d40000;
             color: #fff;
@@ -71,7 +71,6 @@
             cursor: pointer;
             text-transform: uppercase;
             transition: background-color 0.3s ease;
-            z-index: 2;
         }
 
         .cta-button:hover {
@@ -174,12 +173,15 @@
 
     <!-- Header Section -->
     <header>
-        <div>
-            <h1>The Edge of Darkness</h1>
-            <p>Where Imagination Meets the Shadows. Discover dark and gothic art, explore e-books, and more.</p>
-            <button class="cta-button">Explore the Dark Art</button>
-        </div>
+        <!-- The image-only header with a dark overlay is here -->
     </header>
+
+    <!-- New Section for Heading, Paragraph, and Button -->
+    <section class="content-section">
+        <h1>The Edge of Darkness</h1>
+        <p>Where Imagination Meets the Shadows. Discover dark and gothic art, explore e-books, and more.</p>
+        <button class="cta-button">Explore the Dark Art</button>
+    </section>
 
     <!-- Main Content -->
     <main>
