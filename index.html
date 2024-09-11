@@ -6,8 +6,11 @@
     <title>Business Contact Form with Notepad</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
-            background: linear-gradient(to bottom right, #9c27b0, #e91e63, #f44336);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8e44ad, #c0392b, #f39c12);
             min-height: 100vh;
         }
         .question-slide {
@@ -15,6 +18,18 @@
         }
         .question-slide.active {
             display: flex;
+        }
+        input, textarea {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+        input:focus, textarea:focus {
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.8);
+        }
+        button:hover {
+            background-color: #f39c12;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -102,16 +117,16 @@
                 document.getElementById('notes3').value
             ];
             formData.append('notes', JSON.stringify(notes));
-            
+
             try {
-                const response = await fetch('/.netlify/functions/submit-form', {
+                const response = await fetch('<YOUR_GOOGLE_SCRIPT_WEB_APP_URL>', {
                     method: 'POST',
                     body: JSON.stringify(Object.fromEntries(formData)),
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-                
+
                 if (response.ok) {
                     alert('Form submitted successfully!');
                     this.reset();
