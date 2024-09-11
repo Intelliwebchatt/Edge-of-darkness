@@ -1,234 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Edge of Darkness - A showcase of dark, gothic-inspired artwork and e-books. Explore, buy, and dive into the darkness.">
-    <title>The Edge of Darkness</title>
-    
-    <!-- Fonts and Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
+    <title>Business Contact Form with Notepad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #111;
-            color: #eee;
+            background: linear-gradient(to bottom right, #9c27b0, #e91e63, #f44336);
+            min-height: 100vh;
         }
-
-        header {
-            position: relative;
-            height: 70vh; /* Reduced height */
-            background-image: url('https://raw.githubusercontent.com/Intelliwebchatt/Edge-of-darkness/main/AOluq1QDZsLqj94wYdAz--1--ujpho%7E2.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+        .question-slide {
+            display: none;
         }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7); /* Dark overlay for contrast */
-        }
-
-        .content-section {
-            text-align: center;
-            padding: 3rem 1rem;
-            background-color: #222; /* Dark background for the new section */
-        }
-
-        .content-section h1 {
-            font-family: 'UnifrakturMaguntia', serif;
-            color: #fff;
-            font-size: 3rem;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
-            margin-bottom: 1rem;
-        }
-
-        .content-section p {
-            font-size: 1.5rem;
-            color: #ccc;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
-        }
-
-        .cta-button {
-            padding: 15px 30px;
-            background-color: #d40000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #a10000;
-        }
-
-        /* Gallery and Shop styling */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .section {
-            background-color: #222;
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
-        }
-
-        h2 {
-            color: #eee;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-family: 'UnifrakturMaguntia', serif;
-        }
-
-        .gallery {
+        .question-slide.active {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .gallery img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .shop-item {
-            text-align: center;
-            background-color: #333;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            margin-bottom: 1.5rem;
-        }
-
-        .shop-item h3 {
-            color: #fff;
-        }
-
-        .shop-item button {
-            background-color: #d40000;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .shop-item button:hover {
-            background-color: #a10000;
-        }
-
-        footer {
-            background-color: #000;
-            color: #ccc;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        footer a {
-            color: #d40000;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .gallery {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
-
-<body>
-
-    <!-- Header Section -->
-    <header>
-        <!-- The image-only header with a dark overlay is here -->
-    </header>
-
-    <!-- New Section for Heading, Paragraph, and Button -->
-    <section class="content-section">
-        <h1>The Edge of Darkness</h1>
-        <p>Where Imagination Meets the Shadows. Discover dark and gothic art, explore e-books, and more.</p>
-        <button class="cta-button">Explore the Dark Art</button>
-    </section>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Gallery Section -->
-        <section class="section">
-            <h2>Gallery</h2>
-            <div class="gallery">
-                <img src="art1.jpg" alt="Dark Art 1">
-                <img src="art2.jpg" alt="Dark Art 2">
-                <img src="art3.jpg" alt="Dark Art 3">
-                <!-- Add more images as needed -->
+<body class="text-white">
+    <div id="app" class="h-screen flex flex-col">
+        <div id="progress" class="w-full bg-white bg-opacity-30 h-2">
+            <div id="progress-bar" class="bg-white h-full transition-all duration-300 ease-in-out" style="width: 0%"></div>
+        </div>
+        <form id="businessForm" class="flex-grow flex flex-col">
+            <div id="question1" class="question-slide active flex-grow flex flex-col p-8">
+                <div class="flex-none">
+                    <h2 class="text-4xl font-bold mb-4 text-center">What's the name of your business?</h2>
+                    <input type="text" id="businessName" name="businessName" required class="w-full max-w-lg mx-auto p-4 text-2xl border-2 border-white bg-transparent rounded-full text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white">
+                </div>
+                <div class="flex-grow mt-8 flex flex-col">
+                    <h3 class="text-2xl font-semibold mb-2">Notes:</h3>
+                    <textarea id="notes1" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
+                </div>
             </div>
-        </section>
-
-        <!-- Shop Section -->
-        <section class="section">
-            <h2>Shop</h2>
-            <div class="shop-item">
-                <h3>Dark E-Book 1</h3>
-                <p>$9.99</p>
-                <button>Buy Now</button>
+            <div id="question2" class="question-slide flex-grow flex flex-col p-8">
+                <div class="flex-none">
+                    <h2 class="text-4xl font-bold mb-4 text-center">Who is the contact person?</h2>
+                    <input type="text" id="contactPerson" name="contactPerson" required class="w-full max-w-lg mx-auto p-4 text-2xl border-2 border-white bg-transparent rounded-full text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white">
+                </div>
+                <div class="flex-grow mt-8 flex flex-col">
+                    <h3 class="text-2xl font-semibold mb-2">Notes:</h3>
+                    <textarea id="notes2" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
+                </div>
             </div>
-            <div class="shop-item">
-                <h3>Dark E-Book 2</h3>
-                <p>$14.99</p>
-                <button>Buy Now</button>
+            <div id="question3" class="question-slide flex-grow flex flex-col p-8">
+                <div class="flex-none">
+                    <h2 class="text-4xl font-bold mb-4 text-center">What's the phone number?</h2>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required class="w-full max-w-lg mx-auto p-4 text-2xl border-2 border-white bg-transparent rounded-full text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white">
+                </div>
+                <div class="flex-grow mt-8 flex flex-col">
+                    <h3 class="text-2xl font-semibold mb-2">Notes:</h3>
+                    <textarea id="notes3" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
+                </div>
             </div>
-            <!-- Add more products as needed -->
-        </section>
+            <div class="flex justify-center p-8">
+                <button type="button" id="nextBtn" class="bg-white text-purple-600 text-2xl font-bold py-4 px-10 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                    Next
+                </button>
+                <button type="submit" id="submitBtn" class="hidden bg-white text-purple-600 text-2xl font-bold py-4 px-10 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('businessForm');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressBar = document.getElementById('progress-bar');
+        const questions = document.querySelectorAll('.question-slide');
+        let currentQuestion = 0;
 
-        <!-- Contact Section -->
-        <section class="section">
-            <h2>Contact Us</h2>
-            <form>
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
+        function showQuestion(n) {
+            questions[currentQuestion].classList.remove('active');
+            questions[n].classList.add('active');
+            currentQuestion = n;
+            progressBar.style.width = `${((n + 1) / questions.length) * 100}%`;
+            
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+        }
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 The Edge of Darkness | <a href="#">Privacy Policy</a></p>
-    </footer>
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
+            }
+        });
 
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const notes = [
+                document.getElementById('notes1').value,
+                document.getElementById('notes2').value,
+                document.getElementById('notes3').value
+            ];
+            formData.append('notes', JSON.stringify(notes));
+            
+            try {
+                const response = await fetch('/.netlify/functions/submit-form', {
+                    method: 'POST',
+                    body: JSON.stringify(Object.fromEntries(formData)),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    alert('Form submitted successfully!');
+                    this.reset();
+                    document.getElementById('notes1').value = '';
+                    document.getElementById('notes2').value = '';
+                    document.getElementById('notes3').value = '';
+                    showQuestion(0);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Form submission failed. Please try again.');
+            }
+        });
+
+        // Initialize the first question
+        showQuestion(0);
+    </script>
 </body>
-
 </html>
