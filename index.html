@@ -38,7 +38,16 @@
         <div id="progress" class="w-full bg-white bg-opacity-30 h-2">
             <div id="progress-bar" class="bg-white h-full transition-all duration-300 ease-in-out" style="width: 0%"></div>
         </div>
-        <form id="businessForm" class="flex-grow flex flex-col">
+
+        <!-- Updated Form for Netlify Forms -->
+        <form id="businessForm" name="businessForm" netlify netlify-honeypot="bot-field" class="flex-grow flex flex-col">
+            <!-- Honeypot Field for Spam Protection -->
+            <p class="hidden">
+                <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+            </p>
+            <input type="hidden" name="form-name" value="businessForm">
+            
+            <!-- First Question -->
             <div id="question1" class="question-slide active flex-grow flex flex-col p-8">
                 <div class="flex-none">
                     <h2 class="text-4xl font-bold mb-4 text-center">What's the name of your business?</h2>
@@ -46,9 +55,11 @@
                 </div>
                 <div class="flex-grow mt-8 flex flex-col">
                     <h3 class="text-2xl font-semibold mb-2">Notes:</h3>
-                    <textarea id="notes1" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
+                    <textarea id="notes1" name="notes1" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
                 </div>
             </div>
+            
+            <!-- Second Question -->
             <div id="question2" class="question-slide flex-grow flex flex-col p-8">
                 <div class="flex-none">
                     <h2 class="text-4xl font-bold mb-4 text-center">Who is the contact person?</h2>
@@ -56,9 +67,11 @@
                 </div>
                 <div class="flex-grow mt-8 flex flex-col">
                     <h3 class="text-2xl font-semibold mb-2">Notes:</h3>
-                    <textarea id="notes2" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
+                    <textarea id="notes2" name="notes2" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
                 </div>
             </div>
+
+            <!-- Third Question -->
             <div id="question3" class="question-slide flex-grow flex flex-col p-8">
                 <div class="flex-none">
                     <h2 class="text-4xl font-bold mb-4 text-center">What's the phone number?</h2>
@@ -66,9 +79,11 @@
                 </div>
                 <div class="flex-grow mt-8 flex flex-col">
                     <h3 class="text-2xl font-semibold mb-2">Notes:</h3>
-                    <textarea id="notes3" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
+                    <textarea id="notes3" name="notes3" class="flex-grow p-4 text-lg bg-white bg-opacity-20 rounded-lg text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white resize-none" placeholder="Add any additional notes here..."></textarea>
                 </div>
             </div>
+            
+            <!-- Navigation Buttons -->
             <div class="flex justify-center p-8">
                 <button type="button" id="nextBtn" class="bg-white text-purple-600 text-2xl font-bold py-4 px-10 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
                     Next
@@ -79,6 +94,7 @@
             </div>
         </form>
     </div>
+
     <script>
         const form = document.getElementById('businessForm');
         const nextBtn = document.getElementById('nextBtn');
@@ -105,41 +121,6 @@
         nextBtn.addEventListener('click', () => {
             if (currentQuestion < questions.length - 1) {
                 showQuestion(currentQuestion + 1);
-            }
-        });
-
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const notes = [
-                document.getElementById('notes1').value,
-                document.getElementById('notes2').value,
-                document.getElementById('notes3').value
-            ];
-            formData.append('notes', JSON.stringify(notes));
-
-            try {
-                const response = await fetch('<YOUR_GOOGLE_SCRIPT_WEB_APP_URL>', {
-                    method: 'POST',
-                    body: JSON.stringify(Object.fromEntries(formData)),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    alert('Form submitted successfully!');
-                    this.reset();
-                    document.getElementById('notes1').value = '';
-                    document.getElementById('notes2').value = '';
-                    document.getElementById('notes3').value = '';
-                    showQuestion(0);
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Form submission failed. Please try again.');
             }
         });
 
