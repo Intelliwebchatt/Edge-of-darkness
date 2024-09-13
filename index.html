@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Form</title>
+  <title>Contact Form with Google Map</title>
   <style>
     /* Reset Styles */
     * {
@@ -83,6 +83,14 @@
       background-color: #4cae4c;
     }
 
+    /* Google Map */
+    .map {
+      margin-top: 30px;
+      height: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
     /* Responsive */
     @media (max-width: 600px) {
       .container {
@@ -115,6 +123,14 @@
       
       <button type="submit">Submit</button>
     </form>
+
+    <!-- Google Map -->
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096074!2d144.95373631531943!3d-37.8172099797517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577bb6c110f4f3e!2sGoogle%20Australia!5e0!3m2!1sen!2sus!4v1612332891520!5m2!1sen!2sus"
+        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+      </iframe>
+    </div>
   </div>
 </body>
 </html>
