@@ -1,120 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Doors</title>
-<style>
-    body {
-        margin: 0;
-        font-family: 'Georgia', serif;
-        background-image: url('your-path/money-background.jpg'); /* Replace with money-themed image */
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-color: #e9ecef; /* Light background if the image fails to load */
-    }
-    .form-container {
-        width: 500px;
-        margin: 50px auto;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.9);
-        border: 2px solid gold;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    .form-container h1 {
-        text-align: center;
-        color: darkgreen;
-        margin-bottom: 40px;
-        font-size: 48px;
-        text-shadow: 2px 2px 4px #aaa;
-    }
-    .form-container label {
-        color: darkgoldenrod;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 8px;
-        font-size: 18px;
-    }
-    .form-container input[type="text"],
-    .form-container input[type="tel"],
-    .form-container textarea {
-        width: 100%;
-        padding: 15px;
-        margin-bottom: 25px;
-        border: 2px solid #bdc3c7;
-        border-radius: 10px;
-        background-color: #ecf0f1;
-        background-image: url('your-path/banknote-texture.jpg'); /* Replace with money texture */
-        background-size: cover;
-        color: #2c3e50;
-        font-size: 18px;
-    }
-    .form-container input[type="submit"] {
-        width: 100%;
-        padding: 18px;
-        background-color: #27ae60;
-        border: none;
-        border-radius: 10px;
-        color: #ecf0f1;
-        font-size: 24px;
-        cursor: pointer;
-        text-shadow: 1px 1px 2px #333;
-        transition: background-color 0.3s ease;
-    }
-    .form-container input[type="submit"]:hover {
-        background-color: #2ecc71;
-    }
-    #map {
-        width: 100%;
-        height: 800px; /* Increased height */
-        margin: 50px auto;
-        border: 2px solid gold;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    }
-    @media (max-width: 600px) {
+    <meta charset="UTF-8">
+    <title>Doors</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-image: url('your-path/money-background.jpg'); /* Replace with money-themed image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #e9ecef; /* Light background */
+        }
         .form-container {
-            width: 90%;
-            margin: 30px auto;
-            padding: 30px;
+            width: 500px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid gold;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
         }
         .form-container h1 {
+            text-align: center;
+            color: darkgreen;
+            margin-bottom: 40px;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px #aaa;
+        }
+        .form-container label {
+            color: darkgoldenrod;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="tel"],
+        .form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 2px solid #bdc3c7;
+            border-radius: 10px;
+            background-color: #ecf0f1;
+            background-image: url('your-path/banknote-texture.jpg'); /* Replace with money texture */
+            background-size: cover;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 18px;
+            background-color: #27ae60;
+            border: none;
+            border-radius: 10px;
+            color: #ecf0f1;
+            font-size: 24px;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px #333;
+            transition: background-color 0.3s ease;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #2ecc71;
+        }
+        #counter {
+            text-align: center;
             font-size: 36px;
+            color: darkgreen;
+            margin-bottom: 20px;
         }
         #map {
-            height: 600px; /* Adjusted for mobile view */
+            width: 100%;
+            height: 800px; /* Increased height */
+            margin: 50px auto;
+            border: 2px solid gold;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
-    }
-</style>
-<!-- Include Leaflet CSS for maps -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    </style>
 </head>
 <body>
 
 <div class="form-container">
     <h1>Doors</h1>
-    <form name="doors" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <!-- Netlify Forms Hidden Input -->
-        <input type="hidden" name="form-name" value="doors">
-        <input type="hidden" name="bot-field"> <!-- Honeypot field for spam protection -->
-        
+
+    <!-- Counter -->
+    <div id="counter">Counter: 0</div>
+
+    <form name="doors" id="form" method="POST" onsubmit="incrementCounter(event)">
         <label for="business-name">Business Name</label>
         <input type="text" id="business-name" name="business-name" required>
-        
+
         <label for="contact-name">Contact's Name</label>
         <input type="text" id="contact-name" name="contact-name" required>
-        
+
         <label for="phone-number">Phone Number</label>
         <input type="tel" id="phone-number" name="phone-number" required>
-        
+
         <label for="notes">Notes</label>
         <textarea id="notes" name="notes" rows="5"></textarea>
-        
-        <!-- Hidden fields to capture geolocation -->
-        <input type="hidden" id="latitude" name="latitude">
-        <input type="hidden" id="longitude" name="longitude">
-        
+
         <input type="submit" value="Enter">
     </form>
 </div>
@@ -125,58 +112,53 @@
 <!-- Include Leaflet JS for maps -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<!-- Geolocation and Map Script -->
+<!-- Counter and Google Sheets Script -->
 <script>
-    var map;
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var lat = position.coords.latitude;
-            var lon = position.coords.longitude;
+    // Initialize counter
+    let counter = localStorage.getItem('formCounter') ? parseInt(localStorage.getItem('formCounter')) : 0;
+    document.getElementById('counter').innerText = 'Counter: ' + counter;
 
-            // Populate hidden form fields
-            document.getElementById('latitude').value = lat;
-            document.getElementById('longitude').value = lon;
+    // Increment counter when form is submitted
+    function incrementCounter(event) {
+        event.preventDefault(); // Prevent form from refreshing the page
 
-            // Initialize the map
-            map = L.map('map').setView([lat, lon], 16);
+        counter += 1;
+        localStorage.setItem('formCounter', counter); // Save to local storage
+        document.getElementById('counter').innerText = 'Counter: ' + counter;
 
-            // Custom map tile layer (vintage or clean theme)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
+        // Collect form data
+        let formData = {
+            businessName: document.getElementById('business-name').value,
+            contactName: document.getElementById('contact-name').value,
+            phoneNumber: document.getElementById('phone-number').value,
+            notes: document.getElementById('notes').value
+        };
 
-            // Add a custom marker (a small gold coin or dollar icon)
-            var goldIcon = L.icon({
-                iconUrl: 'your-path/gold-coin-icon.png', /* Replace with a money-themed marker icon */
-                iconSize: [38, 38],
-                iconAnchor: [22, 38],
-                popupAnchor: [-3, -76]
-            });
+        // Send data to Google Apps Script
+        sendDataToGoogleSheets(formData);
 
-            // Add the marker to the map
-            L.marker([lat, lon], { icon: goldIcon }).addTo(map)
-                .bindPopup('Your Current Location')
-                .openPopup();
-        }, function(error) {
-            console.error('Error obtaining location: ', error);
-            alert('Unable to retrieve your location. Please enable location services.');
-            // Initialize the map with a default location if geolocation fails
-            map = L.map('map').setView([0, 0], 2);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
-        });
-    } else {
-        alert('Geolocation is not supported by your browser.');
-        // Initialize the map with a default location
-        map = L.map('map').setView([0, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
+        // Clear the form after submission
+        document.getElementById('form').reset();
     }
+
+    // Send form data to Google Sheets using Google Apps Script Web App URL
+    function sendDataToGoogleSheets(formData) {
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // Replace with your Google Apps Script URL
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Form data sent to Google Sheets:', result);
+        })
+        .catch(error => console.error('Error sending data to Google Sheets:', error));
+    }
+
+    // Add your map script here, same as before
 </script>
 
 </body>
