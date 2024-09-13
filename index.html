@@ -1,136 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Form with Google Map</title>
-  <style>
-    /* Reset Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Body Styles */
+<meta charset="UTF-8">
+<title>Doors</title>
+<style>
     body {
-      font-family: 'Arial, sans-serif';
-      background: linear-gradient(to right, #ece9e6, #ffffff);
-      color: #333;
-      padding: 20px;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        /* Money-themed background */
+        background-image: url('https://example.com/money-background.jpg'); /* Replace with your image URL */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
-
-    /* Container */
-    .container {
-      max-width: 500px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    .form-container {
+        width: 400px;
+        margin: 100px auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     }
-
-    /* Heading */
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 300;
-      color: #555;
+    .form-container h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+        font-size: 36px;
     }
-
-    /* Form */
-    form {
-      display: flex;
-      flex-direction: column;
+    .form-container label {
+        color: #34495e;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
     }
-
-    /* Labels */
-    label {
-      margin-bottom: 5px;
-      font-weight: bold;
-      color: #777;
+    .form-container input[type="text"],
+    .form-container input[type="tel"],
+    .form-container textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 2px solid #bdc3c7;
+        border-radius: 10px;
+        background-color: #ecf0f1;
+        background-image: url('https://example.com/banknote-texture.jpg'); /* Replace with your image URL */
+        background-size: cover;
+        color: #2c3e50;
+        font-size: 16px;
     }
-
-    /* Inputs */
-    input, textarea {
-      margin-bottom: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
+    .form-container input[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        background-color: #27ae60;
+        border: none;
+        border-radius: 10px;
+        color: #ecf0f1;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
     }
-
-    /* Input Focus */
-    input:focus, textarea:focus {
-      border-color: #66afe9;
-      outline: none;
+    .form-container input[type="submit"]:hover {
+        background-color: #2ecc71;
     }
-
-    /* Button */
-    button {
-      padding: 15px;
-      background-color: #5cb85c;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    @media (max-width: 480px) {
+        .form-container {
+            width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-container h1 {
+            font-size: 28px;
+        }
     }
-
-    /* Button Hover */
-    button:hover {
-      background-color: #4cae4c;
-    }
-
-    /* Google Map */
-    .map {
-      margin-top: 30px;
-      height: 300px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .container {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Get in Touch</h1>
-    <form name="contact" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contact">
-      
-      <label for="business">Business</label>
-      <input type="text" id="business" name="business" placeholder="Your Business Name" required>
-      
-      <label for="name">Contact Name</label>
-      <input type="text" id="name" name="name" placeholder="Your Full Name" required>
-      
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
-      
-      <label for="notes">Notes</label>
-      <textarea id="notes" name="notes" placeholder="Additional Information" rows="5"></textarea>
-      
-      <button type="submit">Submit</button>
-    </form>
 
-    <!-- Google Map -->
-    <div class="map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096074!2d144.95373631531943!3d-37.8172099797517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577bb6c110f4f3e!2sGoogle%20Australia!5e0!3m2!1sen!2sus!4v1612332891520!5m2!1sen!2sus"
-        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-      </iframe>
-    </div>
-  </div>
+<div class="form-container">
+    <h1>Doors</h1>
+    <form name="doors" method="POST" data-netlify="true">
+        <!-- Netlify form name -->
+        <input type="hidden" name="form-name" value="doors">
+        
+        <label for="business-name">Business Name</label>
+        <input type="text" id="business-name" name="business-name" required>
+        
+        <label for="contact-name">Contact Name</label>
+        <input type="text" id="contact-name" name="contact-name" required>
+        
+        <label for="phone-number">Phone Number</label>
+        <input type="tel" id="phone-number" name="phone-number" required>
+        
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes" rows="4"></textarea>
+        
+        <input type="submit" value="Enter">
+    </form>
+</div>
+
 </body>
 </html>
