@@ -81,21 +81,36 @@
         <!-- Netlify form name -->
         <input type="hidden" name="form-name" value="doors">
         
-        <label for="business-name">Business Name</label>
-        <input type="text" id="business-name" name="business-name" required>
-        
-        <label for="contact-name">Contact Name</label>
+        <label for="contact-name">Contact's Name</label>
         <input type="text" id="contact-name" name="contact-name" required>
         
-        <label for="phone-number">Phone Number</label>
-        <input type="tel" id="phone-number" name="phone-number" required>
+        <label for="business-phone">Business Phone Number</label>
+        <input type="tel" id="business-phone" name="business-phone" required>
         
         <label for="notes">Notes</label>
         <textarea id="notes" name="notes" rows="4"></textarea>
         
+        <!-- Hidden fields to capture geolocation -->
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+        
         <input type="submit" value="Enter">
     </form>
 </div>
+
+<!-- Geolocation Script -->
+<script>
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById('latitude').value = position.coords.latitude;
+            document.getElementById('longitude').value = position.coords.longitude;
+        }, function(error) {
+            console.error('Error obtaining location: ', error);
+        });
+    } else {
+        console.error('Geolocation is not supported by this browser.');
+    }
+</script>
 
 </body>
 </html>
