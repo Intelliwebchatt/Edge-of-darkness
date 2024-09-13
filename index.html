@@ -4,81 +4,7 @@
     <meta charset="UTF-8">
     <title>Doors</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            background-image: url('your-path/money-background.jpg'); /* Replace with money-themed image */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #e9ecef; /* Light background */
-        }
-        .form-container {
-            width: 500px;
-            margin: 50px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid gold;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-        }
-        .form-container h1 {
-            text-align: center;
-            color: darkgreen;
-            margin-bottom: 40px;
-            font-size: 48px;
-            text-shadow: 2px 2px 4px #aaa;
-        }
-        .form-container label {
-            color: darkgoldenrod;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-        .form-container input[type="text"],
-        .form-container input[type="tel"],
-        .form-container textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 25px;
-            border: 2px solid #bdc3c7;
-            border-radius: 10px;
-            background-color: #ecf0f1;
-            background-image: url('your-path/banknote-texture.jpg'); /* Replace with money texture */
-            background-size: cover;
-            color: #2c3e50;
-            font-size: 18px;
-        }
-        .form-container input[type="submit"] {
-            width: 100%;
-            padding: 18px;
-            background-color: #27ae60;
-            border: none;
-            border-radius: 10px;
-            color: #ecf0f1;
-            font-size: 24px;
-            cursor: pointer;
-            text-shadow: 1px 1px 2px #333;
-            transition: background-color 0.3s ease;
-        }
-        .form-container input[type="submit"]:hover {
-            background-color: #2ecc71;
-        }
-        #counter {
-            text-align: center;
-            font-size: 36px;
-            color: darkgreen;
-            margin-bottom: 20px;
-        }
-        #map {
-            width: 100%;
-            height: 800px; /* Increased height */
-            margin: 50px auto;
-            border: 2px solid gold;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
+        /* [Your existing CSS styles here] */
     </style>
 </head>
 <body>
@@ -143,7 +69,7 @@
 
     // Send form data to Google Sheets using Google Apps Script Web App URL
     function sendDataToGoogleSheets(formData) {
-        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // Replace with your Google Apps Script URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzus6iwZnE4XShjPxtOliSlZ0-ddMGR8KGRtH9bAEifu-3lCmbEUHSl6G2aBxCpxncj/exec'; // Your Google Apps Script URL
         fetch(scriptURL, {
             method: 'POST',
             body: JSON.stringify(formData),
@@ -158,7 +84,7 @@
         .catch(error => console.error('Error sending data to Google Sheets:', error));
     }
 
-    // Add your map script here, same as before
+    // [Include your existing map script here]
 </script>
 
 </body>
