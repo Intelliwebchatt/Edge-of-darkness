@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Doors</title>
     <style>
-        body {
+        /* Ensure that the body doesn’t allow scrolling */
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevents scrolling */
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            padding: 20px;
         }
 
         .form-container {
-            max-width: 600px;
-            margin: 0 auto;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px; /* Fixed width */
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -42,9 +48,10 @@
         }
 
         input[type="submit"] {
+            width: 100%;
             background-color: #28a745;
             color: white;
-            padding: 10px 20px;
+            padding: 10px;
             font-size: 18px;
             border: none;
             border-radius: 5px;
@@ -64,10 +71,11 @@
         }
 
         #map {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            height: 400px;
-            margin-top: 20px;
-            border-radius: 10px;
+            height: 50%; /* Fixed height to prevent resizing */
         }
     </style>
 </head>
