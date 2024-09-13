@@ -14,64 +14,78 @@
         background-attachment: fixed;
     }
     .form-container {
-        width: 400px;
-        margin: 100px auto;
-        padding: 30px;
-        background: rgba(255, 255, 255, 0.85);
+        width: 500px;
+        margin: 50px auto;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.9);
         border-radius: 15px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     }
     .form-container h1 {
         text-align: center;
         color: #2c3e50;
-        margin-bottom: 30px;
-        font-size: 36px;
+        margin-bottom: 40px;
+        font-size: 48px;
     }
     .form-container label {
         color: #34495e;
         font-weight: bold;
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
+        font-size: 18px;
     }
     .form-container input[type="text"],
     .form-container input[type="tel"],
     .form-container textarea {
         width: 100%;
-        padding: 12px;
-        margin-bottom: 20px;
+        padding: 15px;
+        margin-bottom: 25px;
         border: 2px solid #bdc3c7;
         border-radius: 10px;
         background-color: #ecf0f1;
         background-image: url('https://example.com/banknote-texture.jpg'); /* Replace with your image URL */
         background-size: cover;
         color: #2c3e50;
-        font-size: 16px;
+        font-size: 18px;
     }
     .form-container input[type="submit"] {
         width: 100%;
-        padding: 15px;
+        padding: 18px;
         background-color: #27ae60;
         border: none;
         border-radius: 10px;
         color: #ecf0f1;
-        font-size: 20px;
+        font-size: 24px;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
     .form-container input[type="submit"]:hover {
         background-color: #2ecc71;
     }
-    @media (max-width: 480px) {
+    /* Map styling */
+    #map {
+        width: 100%;
+        height: 400px;
+        margin: 50px auto;
+        border: 2px solid #34495e;
+        border-radius: 15px;
+    }
+    @media (max-width: 600px) {
         .form-container {
             width: 90%;
-            margin: 50px auto;
-            padding: 20px;
+            margin: 30px auto;
+            padding: 30px;
         }
         .form-container h1 {
-            font-size: 28px;
+            font-size: 36px;
+        }
+        #map {
+            height: 300px;
         }
     }
 </style>
+<!-- Include Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
 
@@ -81,14 +95,17 @@
         <!-- Netlify form name -->
         <input type="hidden" name="form-name" value="doors">
         
+        <label for="business-name">Business Name</label>
+        <input type="text" id="business-name" name="business-name" required>
+        
         <label for="contact-name">Contact's Name</label>
         <input type="text" id="contact-name" name="contact-name" required>
         
-        <label for="business-phone">Business Phone Number</label>
-        <input type="tel" id="business-phone" name="business-phone" required>
+        <label for="phone-number">Phone Number</label>
+        <input type="tel" id="phone-number" name="phone-number" required>
         
         <label for="notes">Notes</label>
-        <textarea id="notes" name="notes" rows="4"></textarea>
+        <textarea id="notes" name="notes" rows="5"></textarea>
         
         <!-- Hidden fields to capture geolocation -->
         <input type="hidden" id="latitude" name="latitude">
@@ -98,17 +115,55 @@
     </form>
 </div>
 
-<!-- Geolocation Script -->
+<!-- Map Container -->
+<div id="map"></div>
+
+<!-- Include Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Geolocation and Map Script -->
 <script>
+    var map;
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            document.getElementById('latitude').value = position.coords.latitude;
-            document.getElementById('longitude').value = position.coords.longitude;
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+
+            // Populate hidden form fields
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lon;
+
+            // Initialize the map
+            map = L.map('map').setView([lat, lon], 16);
+
+            // Set up the tile layer (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Add a marker to the map
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup('Your Current Location')
+                .openPopup();
         }, function(error) {
             console.error('Error obtaining location: ', error);
+            alert('Unable to retrieve your location. Please enable location services.');
+            // Initialize the map with a default location if geolocation fails
+            map = L.map('map').setView([0, 0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
         });
     } else {
-        console.error('Geolocation is not supported by this browser.');
+        alert('Geolocation is not supported by your browser.');
+        // Initialize the map with a default location
+        map = L.map('map').setView([0, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
     }
 </script>
 
