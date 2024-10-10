@@ -1,148 +1,83 @@
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Doors</title>
-    <style>
-        /* Prevent scrolling and ensure everything stays fixed */
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Disable scrolling */
-            font-family: Arial, sans-serif;
-        }
-
-        /* Form container is fixed in the center */
-        .form-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px; /* Fixed width for the form */
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        label {
-            display: block;
-            font-size: 16px;
-            margin-top: 15px;
-            color: #555;
-        }
-
-        input[type="text"], input[type="tel"], textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
-
-        #counter {
-            font-size: 24px;
-            color: #555;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge of Darkness</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header class="site-header">
+        <h1>Edge of Darkness</h1>
+        <nav class="site-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="form-container">
-    <h1>Doors</h1>
+    <main class="site-content">
+        <section id="home" class="home-section">
+            <h2>Welcome to the Edge of Darkness</h2>
+            <p>Explore the art of darkness.</p>
+        </section>
+        
+        <section id="about" class="about-section">
+            <h2>About the Artist</h2>
+            <p>Details about the famous creator.</p>
+        </section>
+        
+        <section id="gallery" class="gallery-section">
+            <h2>Art Gallery</h2>
+            <div class="art-gallery">
+                <!-- Art pieces will go here -->
+                <div class="art-piece">Art 1</div>
+                <div class="art-piece">Art 2</div>
+                <div class="art-piece">Art 3</div>
+                <div class="art-piece">Art 4</div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact-section">
+            <h2>Contact</h2>
+            <p>Get in touch for commissions or collaborations.</p>
+        </section>
+    </main>
 
-    <!-- Counter -->
-    <div id="counter">Counter: 0</div>
-
-    <form name="doors" id="form" method="POST" onsubmit="incrementCounter(event)">
-        <label for="business-name">Business Name</label>
-        <input type="text" id="business-name" name="business-name" required>
-
-        <label for="contact-name">Contact's Name</label>
-        <input type="text" id="contact-name" name="contact-name" required>
-
-        <label for="phone-number">Phone Number</label>
-        <input type="tel" id="phone-number" name="phone-number" required>
-
-        <label for="notes">Notes</label>
-        <textarea id="notes" name="notes" rows="5"></textarea>
-
-        <input type="submit" value="Enter">
-    </form>
-</div>
-
-<!-- Counter and Google Sheets Script -->
-<script>
-    // Initialize counter
-    let counter = localStorage.getItem('formCounter') ? parseInt(localStorage.getItem('formCounter')) : 0;
-    document.getElementById('counter').innerText = 'Counter: ' + counter;
-
-    // Increment counter when form is submitted
-    function incrementCounter(event) {
-        event.preventDefault(); // Prevent form from refreshing the page
-
-        counter += 1;
-        localStorage.setItem('formCounter', counter); // Save to local storage
-        document.getElementById('counter').innerText = 'Counter: ' + counter;
-
-        // Collect form data
-        let formData = {
-            businessName: document.getElementById('business-name').value,
-            contactName: document.getElementById('contact-name').value,
-            phoneNumber: document.getElementById('phone-number').value,
-            notes: document.getElementById('notes').value
-        };
-
-        // Send data to Google Apps Script
-        sendDataToGoogleSheets(formData);
-
-        // Clear the form after submission
-        document.getElementById('form').reset();
-    }
-
-    // Send form data to Google Sheets using Google Apps Script Web App URL
-    function sendDataToGoogleSheets(formData) {
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzus6iwZnE4XShjPxtOliSlZ0-ddMGR8KGRtH9bAEifu-3lCmbEUHSl6G2aBxCpxncj/exec'; // Your Google Apps Script URL
-        fetch(scriptURL, {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(result => {
-            console.log('Form data sent to Google Sheets:', result);
-        })
-        .catch(error => console.error('Error sending data to Google Sheets:', error));
-    }
-</script>
-
+    <footer class="site-footer">
+        <p>&copy; 2023 Edge of Darkness</p>
+    </footer>
 </body>
 </html>
+```
+
+##
+    color: #fff;
+}
+
+.site-footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .site-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-section {
+        grid-column: span 2;
+    }
+}
+```
+
+### 
