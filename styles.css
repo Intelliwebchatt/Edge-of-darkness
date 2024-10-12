@@ -59,14 +59,16 @@ h1, h2, h3, p, ul, form, input, label, textarea, button {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    color: #fff;
 }
 
-.home-section h2 {
+.hero-content h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-.home-section p {
+.hero-content p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
 }
@@ -86,7 +88,7 @@ h1, h2, h3, p, ul, form, input, label, textarea, button {
     transform: scale(1.05);
 }
 
-/* Sections */
+/* General Sections */
 .section {
     padding: 60px 20px;
 }
@@ -112,6 +114,8 @@ h1, h2, h3, p, ul, form, input, label, textarea, button {
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.5s;
 }
 
 .art-piece img {
@@ -142,6 +146,10 @@ h1, h2, h3, p, ul, form, input, label, textarea, button {
 form {
     max-width: 600px;
     margin: 0 auto;
+    padding: 20px;
+    background: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .form-group {
@@ -151,9 +159,66 @@ form {
 label {
     display: block;
     margin-bottom: 8px;
+    color: #f3f3f3;
 }
 
 input, textarea {
     width: 100%;
     padding: 10px;
-    background: #
+    background: #444;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: #fff;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #bbb;
+}
+
+button.btn {
+    background: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s;
+}
+
+button.btn:hover {
+    background: #e03e00;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.site-footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Hover Effects */
+.btn, .nav-link {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.btn:hover, .nav-link:hover {
+    box-shadow: 0 6px 8px rgba(0,0,0,0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .site-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
