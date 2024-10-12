@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge of Darkness</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <h1>Edge of Darkness</h1>
+        <nav class="site-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="site-content">
+        <section id="home" class="home-section parallax">
+            <h2>Welcome to the Edge of Darkness</h2>
+            <p>Explore the art of darkness, where light meets shadow.</p>
+        </section>
+        
+        <section id="about" class="about-section">
+            <h2>About the Artist</h2>
+            <p>An artist dwelling on the edge of light and shadow, where creativity comes alive.</p>
+        </section>
+        
+        <section id="gallery" class="gallery-section">
+            <h2>Art Gallery</h2>
+            <div class="art-gallery">
+                <div class="art-piece">Art Placeholder 1</div>
+                <div class="art-piece">Art Placeholder 2</div>
+                <div class="art-piece">Art Placeholder 3</div>
+                <div class="art-piece">Art Placeholder 4</div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact-section">
+            <h2>Contact</h2>
+            <form name="contact" method="POST" data-netlify="true" action="/thank-you">
+                <input type="hidden" name="form-name" value="contact">
+                <p><label>Name: <input type="text" name="name" required></label></p>
+                <p><label>Email: <input type="email" name="email" required></label></p>
+                <p><label>Message: <textarea name="message" required></textarea></label></p>
+                <p><button type="submit">Send</button></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Edge of Darkness</p>
+    </footer>
+
+    <script>
+        // Parallax scrolling effect
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const heroSection = document.querySelector('.parallax');
+            heroSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        });
+    </script>
+</body>
+</html>
