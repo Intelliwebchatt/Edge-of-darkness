@@ -1,82 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edge of Darkness</title>
+    <title>Artistic Expressions</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_ANALYTICS_ID"></script>
+    <script src="script.js"></script>
 </head>
 <body>
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            .then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(function(error) {
+                console.log('Service Worker registration failed:', error);
+            });
+        }
+    </script>
+
     <header class="site-header">
-        <h1>Edge of Darkness</h1>
+        <img src="logo.jpg" alt="Site Logo" class="logo">
         <nav class="site-nav">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#news" class="nav-link">News</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="site-content">
         <section id="home" class="home-section">
-            <h2>Welcome to the Edge of Darkness</h2>
-            <p>Explore the art of darkness.</p>
+            <div class="hero-content">
+                <h2>Welcome to Artistic Expressions</h2>
+                <p>Discover art that speaks to the soul.</p>
+                <a href="#gallery" class="btn">Explore Gallery</a>
+            </div>
         </section>
         
         <section id="about" class="about-section">
             <h2>About the Artist</h2>
-            <p>Details about the famous creator.</p>
+            <p>An artist and a human, I dwell in a unique space – hovering at the edge of light and shadow. My life has been a continuous dance between these two realms. In the light, I find safety but a numbing sense of the ordinary; in the darkness, though, I come alive, fueled by its complexity and unpredictability. The darkness can be a treacherous territory, its depths threatening to consume those who venture too deep. Yet, the glaring light of the ordinary also stifles, chaining the mind and stifling creativity. As an artist, I exist where light and darkness meet, thriving in the shadows yet drawn to the light. My life has been a dance between these realms, finding comfort in the light but feeling alive in the dark. I choose to live on the edge, in a delicate balance, my art a reflection of this eternal struggle.</p>
         </section>
         
         <section id="gallery" class="gallery-section">
             <h2>Art Gallery</h2>
             <div class="art-gallery">
-                <!-- Art pieces will go here -->
-                <div class="art-piece">Art 1</div>
-                <div class="art-piece">Art 2</div>
-                <div class="art-piece">Art 3</div>
-                <div class="art-piece">Art 4</div>
+                <div class="art-piece">
+                    <img src="art1.jpg" alt="Art Piece 1">
+                    <div class="overlay">
+                        <h3>Art Piece 1</h3>
+                    </div>
+                </div>
+                <div class="art-piece">
+                    <img src="art2.jpg" alt="Art Piece 2">
+                    <div class="overlay">
+                        <h3>Art Piece 2</h3>
+                    </div>
+                </div>
+                <div class="art-piece">
+                    <img src="art3.jpg" alt="Art Piece 3">
+                    <div class="overlay">
+                        <h3>Art Piece 3</h3>
+                    </div>
+                </div>
+                <div class="art-piece">
+                    <img src="art4.jpg" alt="Art Piece 4">
+                    <div class="overlay">
+                        <h3>Art Piece 4</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="news-section">
+            <h2>Latest News</h2>
+            <div id="news-feed">
+                <!-- News articles will be loaded here -->
             </div>
         </section>
         
         <section id="contact" class="contact-section">
             <h2>Contact</h2>
             <p>Get in touch for commissions or collaborations.</p>
+            <!-- Netlify Form -->
+            <form name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2023 Edge of Darkness</p>
+        <p>&copy; 2023 Artistic Expressions</p>
     </footer>
+
+    <!-- Push Messaging -->
+    <script src="push-notifications.js"></script>
 </body>
 </html>
-```
-
-##
-    color: #fff;
-}
-
-.site-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 20px;
-}
-
-/* Responsive adjustments */
-@media (min-width: 768px) {
-    .site-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .gallery-section {
-        grid-column: span 2;
-    }
-}
-```
-
-### 
